@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+
+import argparse
+import sys
+
+import wasamole
+
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    "-d",
+    "--disassemble",
+    dest="disassemble",
+    action="store_true",
+    help="Print disassembled contents of code sections",
+)
+parser.add_argument("file", nargs="+")
+args = parser.parse_args()
+
+for f in args.file:
+    if args.disassemble:
+        module = wasamole.io.from_file(f)
+        print(wasamole.io.to_text_string(module))
