@@ -10,4 +10,7 @@ typecheck:
 test:
 	py.test tests
 
+dist:
+	python setup.py sdist bdist_wheel
+
 .PHONY: init test
