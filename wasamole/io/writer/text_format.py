@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, List
 
 from wasamole.core.exports import BaseExport, FuncExport
 from wasamole.core.module import Module
@@ -22,7 +22,7 @@ class TextWriter:
 
     def __init__(self, module: Module) -> None:
         self.module: Module = module
-        self.buffer: str = ""
+        self.buffer: List[str] = []
         self.indent: int = 0
 
     def write(self) -> str:
@@ -67,12 +67,12 @@ class TextWriter:
                 self._writeln(")")
 
         self._writeln(")")
-        return self.buffer
+        return "".join(self.buffer)
 
     def _write(self, s: str) -> "TextWriter":
-        if len(self.buffer) and self.buffer[-1] == "\n":
+        if len(self.buffer) and len(self.buffer[-1]) and self.buffer[-1][-1] == "\n":
             self._indent()
-        self.buffer += s
+        self.buffer.append(s)
         return self
 
     def _nl(self) -> "TextWriter":
@@ -83,7 +83,7 @@ class TextWriter:
         return self._write(s)._nl()
 
     def _indent(self) -> "TextWriter":
-        self.buffer += " " * self.indent
+        self.buffer.append(" " * self.indent)
         return self
 
     def _write_function_type(self, ft: FunctionType) -> None:
