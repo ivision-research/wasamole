@@ -260,12 +260,12 @@ class MemArgOperand(Operand):
     offset: int
 
     def __str__(self) -> str:
-        me = ""
+        me = []
         if self.offset:
-            me += "offset={0}".format(self.offset)
+            me.append(f"offset={self.offset}")
         if self.align:
-            me += "align={0}".format(self.align)
-        return me
+            me.append(f"align={self.align}")
+        return " ".join(me)
 
 
 @dataclass
