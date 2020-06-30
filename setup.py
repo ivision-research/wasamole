@@ -11,19 +11,28 @@ from setuptools import setup, find_packages
 with open('README.md') as f:
     readme = f.read()
 
-with open('LICENSE') as f:
-    license = f.read()
-
 setup(
     name='wasamole',
-    version='1.0.0',
+    version='0.5.0',
     description='A tasty framework for WebAssembly Software Analysis',
+    long_description_content_type="text/markdown",
     long_description=readme,
     author="Carve Systems, LLC.",
     author_email='meadori@carvesystems.com',
     url='https://github.com/CarveSystems/wasamole',
-    license=license,
+    license='MIT License',
     packages=find_packages(exclude=('tests', 'docs')),
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Development Status :: 4 - Beta",
+        "Operating System :: OS Independent",
+        "Topic :: Security",
+        "Topic :: Utilities",
+        "Topic :: Software Development :: Assemblers",
+        "Topic :: Software Development :: Disassemblers",
+        "Topic :: Software Development :: Interpreters"
+    ],
     scripts=['bin/wasm-objdump'],
     python_requires='>=3.7',
 )
