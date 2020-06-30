@@ -87,11 +87,11 @@ class TextWriter:
         return self
 
     def _write_function_type(self, ft: FunctionType) -> None:
-        self._write("(func ")
+        self._write("(func")
         if len(ft.params):
-            self._write("(param " + " ".join(map(lambda p: p.name, ft.params)) + ")")
+            self._write(" (param " + " ".join(map(lambda p: p.name, ft.params)) + ")")
         if len(ft.results):
-            self._write("(result " + " ".join(map(lambda r: r.name, ft.results)) + ")")
+            self._write(" (result " + " ".join(map(lambda r: r.name, ft.results)) + ")")
         self._write(")")
 
     def _write_import(self, i: int, bi: BaseImport) -> None:
