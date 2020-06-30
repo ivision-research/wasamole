@@ -336,14 +336,7 @@ class Instruction:
 
     @property
     def opname(self) -> str:
-        return (
-            self.opcode.name.lower()
-            .replace("i32_", "i32.", 1)
-            .replace("i64_", "i64.", 1)
-            .replace("f32_", "f32.", 1)
-            .replace("f64_", "f64.", 1)
-            .replace("local_", "local.", 1)
-        )
+        return self.opcode.name.lower().replace("_", ".", 1)
 
     @property
     def operand_types(self) -> List[Type[Operand]]:

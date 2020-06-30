@@ -21,4 +21,4 @@ def test_tables_type():
 
     globl = wasm_binary.globals[-1]
     assert len(globl.init_expression) == 2
-    assert str(globl.init_expression[0]) == "global_get 0"
+    assert str(globl.init_expression[0]) == "global.get 0"
